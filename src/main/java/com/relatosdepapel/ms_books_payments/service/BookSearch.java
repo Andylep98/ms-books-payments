@@ -1,6 +1,7 @@
 package com.relatosdepapel.ms_books_payments.service;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
@@ -34,6 +35,7 @@ public class BookSearch {
 
 // Clase auxiliar para mapear la respuesta del microservicio buscador
 @Getter
+@Setter
 class BookItem {
     private Long id;
     private boolean active;

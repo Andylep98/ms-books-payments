@@ -10,22 +10,22 @@ public class BookSearch {
 
     private WebClient webClient = WebClient.create();
     // @todo Cambiar esta URL según el microservicio buscador
-    private String searchServiceUrl = "http://localhost:8082/api/items";
+    private String searchServiceUrl = "http://host.docker.internal:8082/api/books";
 
-    public BookItem validateItem(Long itemId, Integer quantity) {
+    public BookItem validateBook(Long bookId, Integer quantity) {
         // Verificar si el libro existe, está activo y en stock mediante
         // una petición GET al microservicio ms-books-catalogue
         try {
-            BookItem item = webClient.get()
-                    .uri(searchServiceUrl + "/" + itemId)
+            BookItem book = webClient.get()
+                    .uri(searchServiceUrl + "/" + bookId)
                     .retrieve()
                     .bodyToMono(BookItem.class)
                     .block();
 
-            if (item == null || !item.isActive() || item.getStock() < quantity) {
+            if (book == null || !book.isActive() || book.getStock() < quantity) {
                 throw new RuntimeException("Libro no disponible o sin stock");
             }
-            return item;
+            return book;
         } catch (WebClientResponseException e) {
             throw new RuntimeException("Falló la validación del libro", e);
         }

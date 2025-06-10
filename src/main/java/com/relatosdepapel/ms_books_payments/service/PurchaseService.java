@@ -17,12 +17,12 @@ public class PurchaseService {
         this.bookSearch = bookSearch;
     }
 
-    public Purchase registerPurchase(Long itemId, Integer quantity) {
+    public Purchase registerPurchase(Long bookId, Integer quantity) {
         // Validar el libro con el microservicio ms-books-catalogue
-        BookItem item = bookSearch.validateItem(itemId, quantity);
+        BookItem book = bookSearch.validateBook(bookId, quantity);
 
         Purchase purchase = Purchase.builder()
-                .itemId(itemId)
+                .bookId(bookId)
                 .quantity(quantity)
                 .purchaseDate(LocalDateTime.now())
                 .status("COMPLETADO")

@@ -18,8 +18,8 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "item_id")
-    private Long itemId;
+    @Column(name = "book_id")
+    private Long bookId;
 
     @Column(name = "quantity")
     private Integer quantity;

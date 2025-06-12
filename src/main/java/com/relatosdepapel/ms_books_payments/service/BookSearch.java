@@ -10,25 +10,18 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 public class BookSearch {
 
     private WebClient webClient = WebClient.create();
-    // @todo Cambiar esta URL según el microservicio buscador
-    private String searchServiceUrl = "http://localhost:8080/api/books";
+    // URL del microservicio ms-books-catalogue
+    private String searchServiceUrl = "http://localhost:8080/books";
 
-    public BookItem validateBook(Long bookId, Integer quantity) {
-        // Verificar si el libro existe, está activo y en stock mediante
-        // una petición GET al microservicio ms-books-catalogue
+    public BookItem getBook(Long bookId) {
         try {
-            BookItem book = webClient.get()
+            return webClient.get()
                     .uri(searchServiceUrl + "/" + bookId)
                     .retrieve()
                     .bodyToMono(BookItem.class)
                     .block();
-
-            if (book == null || !book.isActive() || book.getStock() < quantity) {
-                throw new RuntimeException("Libro no disponible o sin stock");
-            }
-            return book;
         } catch (WebClientResponseException e) {
-            throw new RuntimeException("Falló la validación del libro", e);
+            return null; // No existe o error al conectarse
         }
     }
 }

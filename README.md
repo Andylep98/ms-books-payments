@@ -42,6 +42,7 @@ mvn spring-boot:run
 ```
 /api/purchases
 ```
+- Para ver todas las compras se necesita usar GET
 - Para crear una compra se necesita usar POST con un body que contenga `bookId` y `quantity`, ejemplo: 
 
 ```

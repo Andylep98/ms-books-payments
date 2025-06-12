@@ -1,13 +1,48 @@
 # ms-books-payments
 
-**Construir la Imagen**
-- `docker build -t ms-books-payments .`
+## Requisitos para ejecutar el microservicio
+**Java 21**
+- Necesitas tener instalado openjdk21.
+- Si no tienes Java 21, puedes instalarlo con Homebrew:
 
-**Ejecutar la Imagen**
-- `docker run -d -p 8081:8081 ms-books-payments`
+```
+brew install openjdk@21
+```
+- Ejecuta:
+```
+export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
+export PATH="$JAVA_HOME/bin:$PATH"
+```
+- Verifica tu versión con: debe ser la 21
+ ```
+ java -version
+ ```
 
-**Endpoint**
-- `/api/purchases`: para crear una compra se necesita usar POST con un body que contenga `bookId` y `quantity`, ejemplo: 
+**Maven**
+- Necesitas Maven para compilar y ejecutar el proyecto. Puedes usar el wrapper incluido (`./mvnw`) o instalar Maven:
+```
+brew install maven
+```
+- Verifica Maven con:
+```
+mvn -version
+```
+
+**Puerto 8081 libre**
+- El microservicio usa el puerto 8081. Asegúrate de que esté disponible.
+
+## Pasos para ejecutar
+
+- Abre una terminal en la raíz del proyecto y ejecuta:
+```
+mvn spring-boot:run
+```
+
+- Utiliza el siguiente endpoint:
+```
+/api/purchases
+```
+- Para crear una compra se necesita usar POST con un body que contenga `bookId` y `quantity`, ejemplo: 
 
 ```
 {

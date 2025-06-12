@@ -11,7 +11,7 @@ public class BookSearch {
 
     private WebClient webClient = WebClient.create();
     // @todo Cambiar esta URL según el microservicio buscador
-    private String searchServiceUrl = "http://host.docker.internal:8082/api/books";
+    private String searchServiceUrl = "http://localhost:8080/api/books";
 
     public BookItem validateBook(Long bookId, Integer quantity) {
         // Verificar si el libro existe, está activo y en stock mediante

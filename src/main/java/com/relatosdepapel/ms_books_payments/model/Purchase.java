@@ -29,4 +29,7 @@ public class Purchase {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "details")
+    private String details;
 }

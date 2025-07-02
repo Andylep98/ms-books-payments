@@ -51,3 +51,9 @@ mvn spring-boot:run
     "quantity": 5
 }
 ```
+
+## Docker
+### Construir la imagen
+- `docker build -t ms-books-payments .`
+### Ejecutar el microservicio usando Docker
+- `docker run -d -p 8081:8081 ms-books-payments`

@@ -53,9 +53,15 @@ mvn spring-boot:run
 ```
 
 ## Docker
-Primero debemos haber creado una red Docker con:
-- `docker network create relatos-net`
 ### Construir la imagen
 - `docker build -t ms-books-payments .`
+### Obtener IP de Eureka
+- Para obtener la IP de Eureka debemos ejecutar el siguiente comando, donde `<<container-id>>` lo podemos obtener ejecutando `docker ps`.
+  ```
+  docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <<container-id>>
+  ```
 ### Ejecutar el microservicio usando Docker
-- `docker run --detach --network relatos-net --publish 8081:8081 ms-books-payments`
+- Para ejecutar el microservicio ejecutamos el siguiente comando, donde `<<IP_EUREKA>>` es la IP obtenida anteriormente.
+  ```
+  docker run -p 8081:8081 -e EUREKA_URL=http://<<IP_EUREKA>>:8761/eureka ms-books-payments
+  ```

@@ -53,7 +53,9 @@ mvn spring-boot:run
 ```
 
 ## Docker
+Primero debemos haber creado una red Docker con:
+- `docker network create relatos-net`
 ### Construir la imagen
 - `docker build -t ms-books-payments .`
 ### Ejecutar el microservicio usando Docker
-- `docker run -d -p 8081:8081 ms-books-payments`
+- `docker run --detach --network relatos-net --publish 8081:8081 ms-books-payments`

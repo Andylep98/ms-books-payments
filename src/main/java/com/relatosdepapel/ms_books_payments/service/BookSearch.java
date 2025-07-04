@@ -17,7 +17,7 @@ public class BookSearch {
     private String searchServiceUrl = "http://buscador-ms/books";
     private final WebClient.Builder webClient;
 
-    public BookItem getBook(Long bookId) {
+    public BookItem getBook(String bookId) {
         try {
 
 
@@ -41,5 +41,5 @@ class BookItem {
     private Long id;
     private boolean active;
     private int stock;
-    private int isbn;
+    private String isbn;
 }

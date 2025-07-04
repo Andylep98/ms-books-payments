@@ -22,7 +22,7 @@ public class PurchaseService {
         this.bookSearch = bookSearch;
     }
 
-    public Purchase registerPurchase(Long bookId, Integer quantity) {
+    public Purchase registerPurchase(String bookId, Integer quantity) {
         // Obtener el libro del microservicio ms-books-catalogue
         BookItem book = bookSearch.getBook(bookId);
 

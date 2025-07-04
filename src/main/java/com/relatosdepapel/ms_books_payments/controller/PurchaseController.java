@@ -33,6 +33,6 @@ public class PurchaseController {
 @Getter
 @Setter
 class PurchaseRequest {
-    private Long bookId;
+    private String bookId;
     private Integer quantity;
 }
